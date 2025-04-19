@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const membersImages = ["", "", "", ""];
 const groups = ["", "", "", ""];
+// add community
 
 export default function GroupList() {
 //   const { groups, isLoading, isError } = AllCommunity();
