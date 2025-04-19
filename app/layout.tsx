@@ -1,11 +1,20 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import Navbar from "./component/shered/nevbar/Navbar";
+import LayoutWrapper from "./component/shered/LayoutWrapper/LayoutWrapper";
+import LeftSideBarWrapper from "./component/shered/leftSideBar/LeftSideBarWrapper";
+import RightSideWrapper from "./component/shered/rightSideBar/RightSideWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
+
+/* <div className="relative h-full w-full bg-slate-950"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]">
+  
+  </div></div> */
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -27,7 +36,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+          <div className="bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"/>
+          <LayoutWrapper>
+          <Navbar></Navbar>
+          <div className="flex ">
+            <LeftSideBarWrapper></LeftSideBarWrapper>
+          <div className="w-full">
+          <main>{children}</main>
+        </div>
+        <RightSideWrapper></RightSideWrapper>
+          </div>
+          </LayoutWrapper>
+        <Toaster />
       </body>
     </html>
   );
