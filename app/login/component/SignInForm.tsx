@@ -1,5 +1,5 @@
 "use client"
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {FaEye, FaEyeSlash } from "react-icons/fa";
@@ -8,13 +8,13 @@ function SignInForm() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const route = useRouter();
-    const session = useSession();
-    console.log(session, "session")
+    // const session = useSession();
+    // console.log(session, "session")
     const handleSubmit = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         const form = e.target as HTMLFormElement;
         const email = (form.elements.namedItem("email") as HTMLInputElement).value;
-        const response = await signIn("credentials", {
+        const response = await signIn("credentials",{
           email,password,
           redirect: false
         });  

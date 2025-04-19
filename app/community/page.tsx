@@ -14,31 +14,33 @@ export default function GroupList() {
 //   if (isError) return <p>Error loading groups</p>;
 
   return (
-    <div className="max-w-6xl min-h-screen bg-white shadow-lg rounded-lg mx-auto p-4">
+    <div className="max-w-6xl min-h-screen shadow-lg rounded-lg mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Group</h2>
         <div className="flex space-x-2">
-          <select className="border border-gray-300 rounded px-3 py-2 text-sm">
-            <option>Alphabetical</option>
+          <select className="border text-white/80 border-gray-300 rounded px-3 py-2 text-sm">
+            <option className="text-black">Alphabetical</option>
+            <option className="text-black">Alphabetical</option>
+            <option className="text-black">Alphabetical</option>
           </select>
           {/* <CreateCommunityButton /> */}
         </div>
       </div>
 
       <div className="border-b border-gray-300 mb-4 flex space-x-4 text-sm">
-        <span className="text-blue-600 border-b-2 border-blue-600 pb-2">
+        <span className="text-white/80  border-b-2 border-blue-600 pb-2">
           Friends&rsquo;s groups
         </span>
-        <span className="text-gray-600 font-semibold">Suggested for you</span>
-        <span className="text-gray-600 font-semibold">Popular near you</span>
-        <span className="text-gray-600 font-semibold">More suggestions</span>
+        <span className="text-white/80 font-semibold">Suggested for you</span>
+        <span className="text-white/80 font-semibold">Popular near you</span>
+        <span className="text-white/80 font-semibold">More suggestions</span>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {groups.map((group, index: number) => (
           <div
             key={index}
-            className="bg-white border border-gray-300 rounded-lg overflow-hidden shadow-sm"
+            className="bg-white/5 border border-gray-300 rounded-lg overflow-hidden shadow-sm"
           >
             <div className="relative">
               <Image
@@ -57,12 +59,12 @@ export default function GroupList() {
             <div className="text-center pt-8 pb-4 px-4">
               <Link
                 href={`/community/programmingjldsjflksdj`}
-                className="font-semibold text-lg"
+                className="font-semibold text-white text-lg"
               >
                 {/* {group?.group_name} */} Programming Hero
               </Link>
-              <p className="text-gray-500 text-sm">Public</p>
-              <div className="flex justify-center space-x-4 text-gray-600 text-sm mt-2">
+              <p className="text-blue-200 text-sm">Public</p>
+              <div className="flex *:text-white/85 justify-center space-x-4 text-gray-600 text-sm mt-2">
                 <span>12k Members</span>
                 <span>16 Post per day</span>
               </div>
@@ -83,12 +85,11 @@ export default function GroupList() {
                 </span>
               </div>
               <button
-                // className={`mt-4 px-4 py-1 rounded ${
-                //   group.buttonColor || "bg-blue-100 text-blue-700"
-                // } text-sm font-semibold`}
+                className={`mt-4 px-4 py-1 rounded ${
+                   "bg-blue-100 font-semibold cursor-pointer text-blue-700"
+                } text-sm font-semibold`}
               >
-                {/* {group.buttonText || "Join Group"} */}
-                Join Group
+                 Join Group
               </button>
             </div>
           </div>
