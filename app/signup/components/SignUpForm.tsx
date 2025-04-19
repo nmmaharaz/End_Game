@@ -56,9 +56,11 @@ function SignUpForm() {
     console.log(userInfo, "show kar");
    const {data} = await axios.post("http://localhost:3000/api/user", userInfo);
    if(data.acknowledged){
-    toast('Here is your toast.');
-    route.push("/")
-   }
+      toast.success(`${data?.message}`);
+      route.push("/login");
+   }else {
+    toast.error(`${data?.message}`);
+  }
   };
   return (
     <form onSubmit={handleSubmit} action="">

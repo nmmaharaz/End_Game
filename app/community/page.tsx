@@ -16,7 +16,7 @@ export default function GroupList() {
   return (
     <div className="max-w-6xl min-h-screen shadow-lg rounded-lg mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Group</h2>
+        <h2 className="text-xl text-white font-semibold">Group</h2>
         <div className="flex space-x-2">
           <select className="border text-white/80 border-gray-300 rounded px-3 py-2 text-sm">
             <option className="text-black">Alphabetical</option>
@@ -48,12 +48,12 @@ export default function GroupList() {
                 //   group?.group_picture
                 //     ? group?.group_picture
                 //     :
-                     "https://placehold.co/400x150"
+                     "https://i.ibb.co.com/C5P66CyX/code-red.png"
                 }
                 alt="Programming Hero"
                 width={400}
                 height={150}
-                className="opacity-80 w-full h-32 object-cover"
+                className="opacity-50 w-full h-32 object-cover"
               />
             </div>
             <div className="text-center pt-8 pb-4 px-4">

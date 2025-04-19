@@ -6,6 +6,7 @@ import Navbar from "./component/shered/nevbar/Navbar";
 import LayoutWrapper from "./component/shered/LayoutWrapper/LayoutWrapper";
 import LeftSideBarWrapper from "./component/shered/leftSideBar/LeftSideBarWrapper";
 import RightSideWrapper from "./component/shered/rightSideBar/RightSideWrapper";
+import AuthProvider from "@/provider/AuthProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,18 +37,20 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <div className="bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]"/>
+        <AuthProvider>
+          <div className="bg-slate-950 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
           <LayoutWrapper>
-          <Navbar></Navbar>
-          <div className="flex ">
-            <LeftSideBarWrapper></LeftSideBarWrapper>
-          <div className="w-full">
-          <main>{children}</main>
-        </div>
-        <RightSideWrapper></RightSideWrapper>
-          </div>
+            <Navbar></Navbar>
+            <div className="flex ">
+              <LeftSideBarWrapper></LeftSideBarWrapper>
+              <div className="w-full">
+                <main>{children}</main>
+              </div>
+              <RightSideWrapper></RightSideWrapper>
+            </div>
           </LayoutWrapper>
-        <Toaster />
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import {FaEye, FaEyeSlash } from "react-icons/fa";
 import SocialLogin from "./SocialLogin";
+import toast from "react-hot-toast";
 function SignInForm() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -19,10 +20,10 @@ function SignInForm() {
           redirect: false
         });  
         if(response?.ok){
-          // toast('Here is your toast.');
+          toast.success("Login successfully");
           route.push("/")
         }else{
-          // toast.error("Invaild Input");
+          toast.error("Invaild Input");
         }
     }
    

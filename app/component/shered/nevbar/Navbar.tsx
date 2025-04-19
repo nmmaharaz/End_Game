@@ -15,7 +15,7 @@ import Container from "../container/Container";
 
 function Navbar() {
   return (
-    <nav className="bg-gray-950 py-3 shadow-xs sticky top-0 z-50">
+    <nav className="bg-gray-950/55 bg:blur-2xl py-3 shadow-xs sticky top-0 z-50">
       <Container className="flex items-center justify-between">
         <div className="flex items-center gap-x-3">
           <Link href="/">
@@ -49,8 +49,8 @@ function Navbar() {
           <div>
             <div className="text-right">
               <Menu>
-                <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-200 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-300  data-[focus]:outline-1">
-                  <Globe className="text-gray-600"></Globe>
+                <MenuButton className="inline-flex items-center gap-2 rounded-md bg-gray-945/85 py-1.5 px-3 text-sm/6 font-semibold text-white shadow-inner shadow-white/10 focus:outline-none data-[hover]:bg-gray-300  data-[focus]:outline-1">
+                  <Globe className="text-white"></Globe>
                   <ChevronDownIcon className="size-4 text-gray-400" />
                 </MenuButton>
 
