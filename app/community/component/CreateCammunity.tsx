@@ -83,7 +83,7 @@ friend?.name?.toLowerCase().includes(searchTerm.toLowerCase())  );
     console.log(baseUsername, "baseUsername");
     if (data?.user?.email === undefined) return alert("Please login first");
     const newCommunity = await axios.post(
-      `/api/community/${data?.user?.email}`,
+      `${process.env.NEXTAUTH_URL}/api/community/${data?.user?.email}`,
       {
         group_name: groupName,
         group_picture: avatarUrl,
