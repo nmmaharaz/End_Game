@@ -53,10 +53,10 @@ function SignUpForm() {
       password: password,
       confirm_password: confirmPassword,
     };
-    console.log(userInfo, "show kar");
    const {data} = await axios.post("http://localhost:3000/api/user", userInfo);
+   console.log(data)
    if(data.acknowledged){
-      toast.success(`${data?.message}`);
+      toast.success("Registration Successfully please login");
       route.push("/login");
    }else {
     toast.error(`${data?.message}`);
