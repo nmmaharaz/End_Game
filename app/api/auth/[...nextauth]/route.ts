@@ -20,7 +20,7 @@ const authOptions: AuthOptions = {
           password: credentials.password,
         };
         try {
-          const { data } = await axios("/api/user", {
+          const { data } = await axios(`${process.env.NEXTAUTH_URL}/api/user`, {
             params: userInfo,
           });
           if (data) {

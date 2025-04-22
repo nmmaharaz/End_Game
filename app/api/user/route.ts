@@ -13,7 +13,6 @@ interface users {
 
 export const POST = async (req: Request) => {
     const body: users = await req.json();
-    console.log(body, "body")
     const userCollection = await dbConnect(collectionNameObj.userCollection)
     const userInfo = await userCollection.findOne({email:body?.email})
     if(userInfo){
@@ -39,7 +38,6 @@ export const GET = async (req: Request) => {
   const { searchParams } = new URL(req.url);
   const email = searchParams.get("email");
   const password = searchParams.get("password");
-  console.log(email, password)
   const userCollection = await dbConnect(collectionNameObj.userCollection);
   const user = await userCollection.findOne({email});
   if (!user) {
@@ -48,5 +46,4 @@ export const GET = async (req: Request) => {
   const hashPassword = await bcrypt.compare(password||"", user.password)
   if(!hashPassword)return NextResponse.json({ ok: false, message: "Invaild Password" });
   return NextResponse.json(user);
-
 };
