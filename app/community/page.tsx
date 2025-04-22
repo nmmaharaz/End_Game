@@ -1,19 +1,35 @@
-"use client";
 import Image from "next/image";
-// import CreateCommunityButton from "./component/CreateCommunityButton";
 import Link from "next/link";
 import CreateCommunityButton from "./component/CreateCommunityButton";
-// import { AllCommunity } from "./component/AllCommunity";
+import axios from "axios";
+
+interface Group {
+  _id?: string;
+  group_name?: string;
+  group_picture?: string;
+  audience?: string;
+  description?: string;
+  email?: string;
+  user_name?: string;
+  post?: string;
+}
 
 const membersImages = ["", "", "", ""];
-const groups = ["", "", "", ""];
-// add community
 
-export default function GroupList() {
-//   const { groups, isLoading, isError } = AllCommunity();
-//   if (isLoading) return <p>Loading...</p>;
-//   if (isError) return <p>Error loading groups</p>;
+const fetchCommunityrData = async (): Promise<Group[]> => {
+  try {
+    const { data: postedData } = await axios.get<Group[]>(
+      `${process.env.NEXTAUTH_URL}/api/community`
+    );
+    return postedData;
+  } catch (error) {
+    console.error("Error fetching posts:", error);
+    return [];
+  }
+};
 
+export default async function GroupList() {
+  const groups = await fetchCommunityrData();
   return (
     <div className="max-w-6xl min-h-screen shadow-lg rounded-lg mx-auto p-4">
       <div className="flex justify-between items-center mb-4">
@@ -46,10 +62,9 @@ export default function GroupList() {
             <div className="relative">
               <Image
                 src={
-                  // group?.group_picture
-                  //   ? group?.group_picture
-                  //   :
-                "https://i.ibb.co.com/C5P66CyX/code-red.png"
+                  group?.group_picture
+                    ? group?.group_picture
+                    : "https://i.ibb.co.com/C5P66CyX/code-red.png"
                 }
                 alt="Programming Hero"
                 width={400}
@@ -59,10 +74,10 @@ export default function GroupList() {
             </div>
             <div className="text-center pt-8 pb-4 px-4">
               <Link
-                href={`/community/programmingjldsjflksdj`}
+                href={`/community/${group?.user_name}`}
                 className="font-semibold text-white text-lg"
               >
-                {/* {group?.group_name} */} Programming Hero
+                {group?.group_name}
               </Link>
               <p className="text-blue-200 text-sm">Public</p>
               <div className="flex *:text-white/85 justify-center space-x-4 text-gray-600 text-sm mt-2">
@@ -81,16 +96,14 @@ export default function GroupList() {
                   />
                 ))}
                 <span className="h-[32] flex items-center justify-center w-[32] bg-gray-300 text-xs rounded-full px-2 py-1">
-                    +12
+                  +12
                   {/* +{group.extraMembers || 12} */}
                 </span>
               </div>
               <button
-                className={`mt-4 px-4 py-1 rounded ${
-                   "bg-blue-100 font-semibold cursor-pointer text-blue-700"
-                } text-sm font-semibold`}
+                className={`mt-4 px-4 py-1 rounded ${"bg-blue-100 font-semibold cursor-pointer text-blue-700"} text-sm font-semibold`}
               >
-                 Join Group
+                Join Group
               </button>
             </div>
           </div>

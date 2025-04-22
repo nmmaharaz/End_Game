@@ -4,6 +4,7 @@ import axios from "axios";
 import { CloudUploadIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { FormEvent, useEffect, useRef, useState} from "react";
 import toast from "react-hot-toast";
 
@@ -26,7 +27,9 @@ function CreateCammunity() {
   const [selectedFriends, setSelectedFriends] = useState<string[]>([]);
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const { data } = useSession();
+  const route = useRouter()
   //  Group Photo
+
   const fileInRef = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<File|null>(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
@@ -83,7 +86,7 @@ friend?.name?.toLowerCase().includes(searchTerm.toLowerCase())  );
     console.log(baseUsername, "baseUsername");
     if (data?.user?.email === undefined) return alert("Please login first");
     const newCommunity = await axios.post(
-      `${process.env.NEXTAUTH_URL}/api/community/${data?.user?.email}`,
+      `/api/community/${data?.user?.email}`,
       {
         group_name: groupName,
         group_picture: avatarUrl,
@@ -96,6 +99,7 @@ friend?.name?.toLowerCase().includes(searchTerm.toLowerCase())  );
     );
     if (newCommunity.status === 201) {
       (document.getElementById("create_group") as HTMLDialogElement)?.close();
+      route.refresh()
       toast.success(newCommunity.data.message);
     } else {
       toast.error("Error creating community");
