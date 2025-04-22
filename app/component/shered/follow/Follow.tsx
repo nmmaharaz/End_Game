@@ -23,7 +23,7 @@ function Follow() {
         if (session?.user?.email) {
           try {
             const res = await axios.get<User[]>(
-              `http://localhost:3000/api/user/${session.user.email}`
+              `/api/user/${session.user.email}`
             );
             setUsers(res.data);
           } catch (error) {

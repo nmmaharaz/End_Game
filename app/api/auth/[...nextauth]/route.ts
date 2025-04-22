@@ -20,7 +20,7 @@ const authOptions: AuthOptions = {
           password: credentials.password,
         };
         try {
-          const { data } = await axios("http://localhost:3000/api/user", {
+          const { data } = await axios("/api/user", {
             params: userInfo,
           });
           if (data) {

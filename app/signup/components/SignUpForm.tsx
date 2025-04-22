@@ -53,7 +53,7 @@ function SignUpForm() {
       password: password,
       confirm_password: confirmPassword,
     };
-   const {data} = await axios.post("http://localhost:3000/api/user", userInfo);
+   const {data} = await axios.post("/api/user", userInfo);
    console.log(data)
    if(data.acknowledged){
       toast.success("Registration Successfully please login");

@@ -63,7 +63,7 @@ friend?.name?.toLowerCase().includes(searchTerm.toLowerCase())  );
     const fetchFriendData = async () => {
       try {
         const response = await axios.get<Friend[]>(
-          `http://localhost:3000/api/follow`
+          `/api/follow`
         );
         setFriendData(response.data);
       } catch (error) {
@@ -83,7 +83,7 @@ friend?.name?.toLowerCase().includes(searchTerm.toLowerCase())  );
     console.log(baseUsername, "baseUsername");
     if (data?.user?.email === undefined) return alert("Please login first");
     const newCommunity = await axios.post(
-      `http://localhost:3000/api/community/${data?.user?.email}`,
+      `/api/community/${data?.user?.email}`,
       {
         group_name: groupName,
         group_picture: avatarUrl,
