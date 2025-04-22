@@ -2,6 +2,7 @@
 import Image from "next/image";
 // import CreateCommunityButton from "./component/CreateCommunityButton";
 import Link from "next/link";
+import CreateCommunityButton from "./component/CreateCommunityButton";
 // import { AllCommunity } from "./component/AllCommunity";
 
 const membersImages = ["", "", "", ""];
@@ -23,7 +24,7 @@ export default function GroupList() {
             <option className="text-black">Alphabetical</option>
             <option className="text-black">Alphabetical</option>
           </select>
-          {/* <CreateCommunityButton /> */}
+          <CreateCommunityButton />
         </div>
       </div>
 
@@ -45,10 +46,10 @@ export default function GroupList() {
             <div className="relative">
               <Image
                 src={
-                //   group?.group_picture
-                //     ? group?.group_picture
-                //     :
-                     "https://i.ibb.co.com/C5P66CyX/code-red.png"
+                  // group?.group_picture
+                  //   ? group?.group_picture
+                  //   :
+                "https://i.ibb.co.com/C5P66CyX/code-red.png"
                 }
                 alt="Programming Hero"
                 width={400}
